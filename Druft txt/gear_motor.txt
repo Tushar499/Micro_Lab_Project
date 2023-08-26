@@ -1,0 +1,30 @@
+#include <AFMotor.h>
+
+AF_DCMotor motor(1); // 3 for belt , 2for Plate, 1for Lift
+int n=1;
+void setup() {
+  Serial.begin(9600);
+  motor.setSpeed(255); // Set the motor speed (255 for lift),(155 for plate)
+}
+
+void loop() {
+  if(n==1){
+  motor.run(BACKWARD);
+  delay(300); 
+  
+  // Stop motor
+  motor.run(RELEASE);
+  delay(1000); 
+  // motor.run(FORWARD);
+  // delay(1000); 
+  // motor.run(RELEASE);
+  // delay(1000); 
+  n=0;
+  while (true) {
+    // Do nothing, the loop will exit
+    return;
+  }
+  }
+  
+  Serial.println(n);
+}
